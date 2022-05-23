@@ -1,0 +1,295 @@
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes letters {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(3.5);
+  }
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Exo 2", sans-serif; 
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  text-decoration: none;
+}
+
+.pulsing-shadow{
+  animation: pulsing 2s infinite;
+}
+
+.container { 
+  animation: animatedBackground 40s linear infinite;min-height: 100vh; 
+  max-width: 100%;
+  max-height: 100%;
+  padding: 20px;
+  background-image: url(images/fon.jpeg);
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+}
+
+.rating-ithems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.rating {
+  width: 50px;
+  height: 50px;
+}
+
+.rating-new {
+  width: 50px;
+  height: 50px;
+}
+
+.container .btn {
+  display: grid;
+  font-family: 'Exo 2',
+  sans-serif;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.text{
+  font-size: 60px;
+  text-align: center;
+  color: hsl(51, 96%, 50%);
+}
+
+.home{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.sound {
+  border: 0;
+  width: 70px;
+  height: 70px; 
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;  
+  padding: 10px;
+}
+
+.new-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-family: 'Exo 2',sans-serif;
+  font-weight: bold;
+  color: #f96a0a;
+}
+
+.images-letter {
+  flex: 1 1 20%;
+}
+
+.images{
+  border: 5px solid rgb(255, 7, 7);
+  width: 100%;
+  height: 100%;
+}
+
+.images2 {
+  border: 5px solid rgb(59, 127, 1);
+  width: 100%;
+  height: 100%;
+}
+
+.timer{
+  margin: auto;
+  border: 5px dotted #ff1d00;
+  width: 300px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: #dc3545;
+}
+
+.general{
+  display: flex;
+  flex-wrap: wrap; 
+  flex: 1 1 20%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.general-shadow{
+  display: flex;
+  flex: 1 1 20%;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;  
+}
+
+.images-shadow-img {
+  border: 7px inset #dc3545;
+  width: 100%;
+  height: 100%;
+}
+
+.images-shadow {
+  flex: 1 1 20%;
+}
+
+li{
+  list-style-type: none;
+}
+
+.open {
+  border: 2px #ff1d00 solid;
+  border-radius: 5px;
+  padding: 8px 12px;
+  background-color: #ffda00;
+  font-size: 22px;
+  color: rgb(255, 111, 1);
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  display: block;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 40px 10px rgba(237, 106, 106, 0.9);
+  width: 600px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  padding: 35px;
+  background: #ffda00;
+}
+
+.modal-closed {
+  display: none;
+}
+
+.modal-button {
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-button .button-other {
+  border: 5px #ff1d00 inset;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: #ffc67b;
+  font-size: 22px;
+  color: #dc3545;
+}
+
+.text-letter{
+  padding: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #dc3545;
+}
+
+.new-letter{
+  animation: letters 2s infinite;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #dc3545;
+}
+
+td,th{
+  border: 2px solid #5d3527;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-view{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.table-input{
+  margin: 10px;
+  border-color: #5d3527;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.table-text{
+  font-size: 19px;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 900;
+  color: #1d1617;
+}
+
+.modal-button .button-other:hover {
+  background-color: #f9a10a;
+  border-color: #cc0000;
+  color: #fff;
+}
+
+.modal-button .button-other:active {
+  background-color: #f96a0a;
+  border-color: #dc3545;
+}
+
+.open:hover {
+  background-color: #f9a10a;
+  border-color: #cc0000;
+  color: #fff;
+}
+
+.open:active {
+  background-color: #f96a0a;
+  border-color: #cc0000;
+}
+
+.rating::before {
+  content: "★";
+  display: block;
+  color: #f4433645;
+}
+
+.rating-new::before {
+  content: "★";
+  display: block;
+  color: #ff5722;
+}
+

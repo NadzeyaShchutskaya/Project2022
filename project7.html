@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project</title>
+</head>
+<body>
+	<!DOCTYPE html>
+	<html>
+	
+	<head>
+		<meta charset="UTF-8" />
+		<title>Project</title>
+		<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	
+	<body>
+		<div class="container">
+			<main id="main"></main>
+		</div>
+
+  	<script src="http://fe.it-academy.by/JQ/jquery.js"></script>
+		<script>
+			let main = document.getElementById("main");
+
+			const links = {
+				main: "<nav><ul class= buttons><li><input type=image value=Кнопка src=images/home.jpg alt=Home id=home class=home></input></li><li><input type=image value=Кнопка src=images/soundon.png alt=Sound id=zvuk class=home></input><audio src=audio.mp3 id=sounds type=audio/mpeg></li></ul></nav><section><h1 class=text>Мини-игры для детей</h1><div id=hash-buttons><div class=btn id=btn><p><a href=#letters class=open id=search-letter title=Кнопка>Найди букву</a></p><p><a href=#shadow class=open id=search-shadow title=Кнопка>Найди тень</a></p></div></div></section>",
+				letters: "<nav><ul class= buttons><li><input type=image value=Кнопка src=images/home.jpg alt=Home id=home class=home></input></li><li><input type=image value=Кнопка src=images/soundon.png alt=Sound id=zvuk class=home></input><audio src=audio.mp3 id=sounds type=audio/mpeg></li></ul ></nav><div class=modal id=modal><p class=text-letter>Правила.<br/><br/>Определи первую букву слова, изображенного на картинке, и перемести ее на эту картинку.<br/> Постарайся справиться за 1 минуту и установи рекорд!</p><div class=modal-button><a href=#lettersImages class=button-other>Играть</a></div></div>",
+				shadow: "<nav><ul class= buttons><li><input type=image value=Кнопка src=images/home.jpg alt=Home id=home class=home></input></li><li><input type=image value=Кнопка src=images/soundon.png alt=Sound id=zvuk class=home></input><audio src=audio.mp3 id=sounds type=audio/mpeg></li></ul ></nav><div class=modal modal-closed id=modal><p class=text-letter>Правила.<br/><br/>Выбери картинку, внимательно рассмотри ее и постарайся найти подходящую тень.</p><div class=modal-button><a href=#shadowImages class=button-other>Играть</a></div></div>",
+				lettersImages: "<nav><ul class= buttons><li><input type=image value=Кнопка src=images/home.jpg alt=Home id=home class=home></input></li><li><input type=image value=Кнопка src=images/soundon.png alt=Sound id=zvuk class=home></input><audio src=audio.mp3 id=sounds type=audio/mpeg></li></ul></nav><div class=modal modal-closed id=modal><div id=deleted><div class=general id=general><div class=images-letter><img src=images/Letters/1.jpeg alt=А class=images draggable=true data-parent=А></div><div class=images-letter><img src=images/Letters/6.jpeg alt=Ч class=images draggable=true data-parent=Ч></div><div class=images-letter><img src=images/Letters/8.jpeg alt=Арбуз class=images2 data-parent=А></div><div class=images-letter><img src=images/Letters/13.jpeg alt=Чайник class=images2 data-parent=Ч></div><div class=images-letter><img src=images/Letters/5.jpeg alt=Л class=images draggable=true data-parent=Л></div><div class=images-letter><img src=images/Letters/2.jpeg alt=Б class=images draggable=true data-parent=Б></div><div class=images-letter><img src=images/Letters/7.jpeg alt=Я class=images draggable=true data-parent=Я></div><div class=images-letter><img src=images/Letters/4.jpeg alt=К class=images draggable=true data-parent=К></div><div class=images-letter><img src=images/Letters/14.jpeg alt=Яблоки class=images2 data-parent=Я></div><div class=images-letter><img src=images/Letters/9.jpeg alt=Бананы class=images2 data-parent=Б></div><div class=images-letter><img src=images/Letters/11.jpeg alt=Котик class=images2 data-parent=К></div><div class=images-letter><img src=images/Letters/12.jpeg alt=Лягушка class=images2 data-parent=Л></div></div><div><p class=new-letter id=new-letter></p></div><div id=time-letter class=modal-closed></div><div class=modal-button><a href=#letters class=button-other id=letters-button>Играть заново</a></div></div><div id=table class=modal-closed><h2 class=text-letter>Таблица рекордов</h2><div id=loadRecord class=table-text></div><label for=user-name class=text-letter>Введите ник</label><input type=text id=user-name class=table-input><a id=sendBtn href=#lettersImages class=open>Отправить</a></div></div>",
+				shadowImages: "<nav><ul class= buttons><li><input type=image value=Кнопка src=images/home.jpg alt=Home id=home class=home></input></li><li><input type=image value=Кнопка src=images/soundon.png alt=Sound id=zvuk class=home></input><audio src=audio.mp3 id=sounds type=audio/mpeg></li></ul></nav><div class=modal id=modal><div><div class=general-shadow id=general-shadow><div class=images-shadow><img src=images/Shadow/3.jpeg class=images-shadow-img data-card=3></div><div class=images-shadow><img src=images/Shadow/4.jpeg class=images-shadow-img data-card=4></div><div  class=images-shadow><img src=images/Shadow/5.jpeg class=images-shadow-img data-card=5></div><div class=images-shadow><img src=images/Shadow/6.jpeg class=images-shadow-img data-card=6></div><div class=images-shadow><img src=images/Shadow/7.jpeg class=images-shadow-img data-card=7></div><div  class=images-shadow><img src=images/Shadow/8.jpeg class=images-shadow-img data-card=5></div><div class=images-shadow><img src=images/Shadow/1.jpeg class=images-shadow-img data-card=2></div><div class=images-shadow><img src=images/Shadow/9.jpeg class=images-shadow-img data-card=6></div><div class=images-shadow><img src=images/Shadow/10.jpeg class=images-shadow-img data-card=7></div><div  class=images-shadow><img src=images/Shadow/2.jpeg class=images-shadow-img data-card=2></div><div class=images-shadow><img src=images/Shadow/11.jpeg class=images-shadow-img data-card=4></div><div class=images-shadow><img src=images/Shadow/12.jpeg class=images-shadow-img data-card=3></div></div><div class=rating-ithems><div class=rating></div><div class=rating></div><div class=rating></div><div class=rating></div><div class=rating></div><div class=rating></div></div><div class=modal-button id=shadow-buttons><a href=#shadow class=button-other>Играть заново</a></div></div></div>",
+			};
+
+			window.onbeforeunload = function () {
+				  return "Вы точно хотите покинуть данную страницу?";
+				};
+
+			function updateViewLetters() {
+
+				let modal = document.getElementById("modal");
+				let letter = document.getElementById("search-letter");
+				let shadow = document.getElementById("search-shadow");
+				let home = document.getElementById("home");
+				let sound = document.getElementById("sounds");
+				let zvuk = document.getElementById("zvuk");
+				let otherPlays = document.getElementById("other-plays");
+
+				home.addEventListener("click", homeClick);
+
+				function homeClick() {
+					location.hash = "#main";
+				};
+
+				zvuk.addEventListener("click", soundPlay);
+
+				function soundPlay() {
+					sound.play();
+					zvuk.addEventListener("click", soundMute);
+
+					function soundMute() {
+						sound.muted = true;
+						zvuk.removeAttribute("src", "images/soundon.png");
+						zvuk.setAttribute("src", "images/soundoff.png");
+					};
+				};
+
+				const dragAndDrop = () => {
+
+					function dragStart(event) {
+						event.dataTransfer.setData("cardLetters", this.dataset.parent);
+					}
+
+					const dragEnd = function (event) {
+						this.classList.remove("modal-closed");
+					};
+
+					function dragOver(event) {
+						event.preventDefault();
+					};
+
+					function dragEnter(event) {
+						event.preventDefault();
+					};
+
+          var count = 0;
+
+          let btnSend = document.getElementById("sendBtn");
+          btnSend.addEventListener("click", sendData);
+          function sendData(){
+	          var userName=document.getElementById("user-name").value;
+
+            if(userName!=""){
+	            $.ajax({
+                type: 'post',
+                url: 'sendRecord.php',
+                data: {
+                  'user': userName,
+                  'time':recordSec
+                },
+                success: function(data){
+                console.log( data );
+                if(data.indexOf('success') >= 0){
+                var total=data.match(new RegExp("totalstart" + "(.*)" +"totalend"));
+                total=total[1];
+                var counter=0;
+                var tempUser="";
+                var tempRecord="";
+                var recordHTML="";
+                while(counter<total){
+                	counter++;
+                	tempUser=data.match(new RegExp("userName" + counter + "a" + "(.*)" +"userRecord"+counter+"a"));
+                  tempUser=tempUser[1];
+                  tempRecord=data.match(new RegExp("userRecord" + counter + "a" + "(.*)" +"finish"+counter+"a"));
+                  tempRecord=tempRecord[1];
+                  recordHTML+="<p> Ник: " +tempUser+" Время: "+tempRecord+" секунд(ы) </p>";
+                }
+                  document.getElementById("loadRecord").innerHTML=recordHTML;
+
+                  if(data.indexOf("exists")>=0){
+                	alert("Поздравляем!Вы попали в топ-5!");
+                } else {
+                	alert("К сожалению, вы не попали в топ-5.");
+                }  
+              } else if(data.indexOf("errdata")>=0){
+            	  alert("Ошибка связи с сервером");
+              } else if(data.indexOf("empty")>=0){
+            	alert("Нет рекордов");
+              } else {
+                alert("Неизвестная ошибка");
+              }
+            }
+          });
+	      } else{
+		        alert("Введите ваше ник!");
+	        };
+      };
+
+				function dragDrop(event) {
+					const dragFlag = event.dataTransfer.getData("cardLetters");
+					const dragItem = document.querySelector(`[data-parent = "${dragFlag}"] `);
+
+					if (dragFlag === this.dataset.parent) {
+						this.remove();
+						dragItem.remove();
+						let newP = document.getElementById("new-letter");
+						newP.innerHTML = `${dragFlag}`;
+						count++;
+
+						if(count == 6){
+							let deleted = document.getElementById("deleted");
+							deleted.classList.add("modal-closed");
+							let table = document.getElementById("table");		
+							table.classList.remove("modal-closed");
+							table.classList.add("table-view");						
+						}
+						} else if (dragFlag !== this.dataset.parent) {
+							let newP = document.getElementById("new-letter");
+							newP.innerHTML = "Error!";
+						};
+					};
+
+					let ulLetter = document.querySelectorAll(".images");
+
+					ulLetter.forEach(cardLetters => {
+						cardLetters.addEventListener("dragstart", dragStart);
+						cardLetters.addEventListener("dragend", dragEnd);
+					});
+
+					let ulLetter2 = document.querySelectorAll(".images2");
+
+					ulLetter2.forEach(cardImage => {
+						cardImage.addEventListener("dragover", dragOver);
+						cardImage.addEventListener("dragenter", dragEnter);
+						cardImage.addEventListener("drop", dragDrop);
+					});
+
+					let ulLetterAll = document.querySelectorAll(".images-letter");
+					console.log(ulLetterAll);
+
+					(function shuffleLitters() {
+						ulLetterAll.forEach(elem => {
+							let ramdomImgLetters = Math.floor(Math.random() * 14);
+							elem.style.order = ramdomImgLetters;
+						});
+					})();
+
+          let lettersButton = document.getElementById("letters-button");
+          lettersButton.addEventListener("click", lettersButtonClick);
+          function lettersButtonClick(){
+            window.history.go();
+          };
+
+					var recordSec = 0;
+
+					let general = document.getElementById("general");
+					let table = document.getElementById("table");
+
+					function allTimeLetter() {
+						let timeLetterr = document.getElementById("time-letter");
+						timeLetterr.classList.add("text-letter");
+						timeLetterr.classList.remove("modal-closed");
+						
+						var minutes = 0;
+						var seconds = 0;
+
+						let timerImgLetter = setInterval(function () {
+							if (seconds >= 60 || count==6) {																
+								clearInterval(timerImgLetter);
+								timeLetterr.innerHTML = "К сожалению,время вышло.<br/><br/>Ты не успел справиться.";
+								general.classList.add("modal-closed");
+
+								let newA = document.createElement("div");
+								newA.setAttribute("class", "modal-button");
+								timeLetterr.after(newA);
+
+								let newButton = document.createElement("a");
+								newA.appendChild(newButton);              
+								newButton.setAttribute("class", "button-other");
+								newButton.textContent = "Вернуться на главную";
+								newButton.addEventListener("click", newButtonClick);
+
+								function newButtonClick() {
+									location.hash = "#main";
+								};
+							} else {
+								timeLetterr.innerHTML = `${Math.trunc(minutes)} : ${Math.trunc(seconds)}`;
+							};
+							seconds++;
+							recordSec++;
+						}, 1000)
+					};
+					allTimeLetter();
+				};
+				dragAndDrop();
+			};
+
+
+			function updateViewShadows() {
+				let modal = document.getElementById("modal");
+				let letter = document.getElementById("search-letter");
+				let shadow = document.getElementById("search-shadow");
+				let home = document.getElementById("home");
+				let sound = document.getElementById("sounds");
+				let zvuk = document.getElementById("zvuk");
+				let otherPlays = document.getElementById("other-plays");
+
+				home.addEventListener("click", homeClick);
+
+				function homeClick() {
+					location.hash = "#main";
+				};
+
+				zvuk.addEventListener("click", soundPlay);
+
+				function soundPlay() {
+					sound.play();
+					zvuk.addEventListener("click", soundMute);
+
+					function soundMute() {
+						sound.muted = true;
+						zvuk.removeAttribute("src", "images/soundon.png");
+						zvuk.setAttribute("src", "images/soundoff.png");
+					};
+				};
+
+				ulShadowAll = document.querySelectorAll(".images-shadow-img");
+
+				ulShadowAll.forEach(cardShadow => {
+					cardShadow.addEventListener("click", ulShadowAllClick);
+				});
+
+				let firstCard, secondCard;
+				let hasCard = false;
+
+				function ulShadowAllClick() {
+
+					if (this === firstCard) {
+						this.classList.remove("pulsing-shadow");
+						resetBoard();
+						return;
+					};
+
+					if (!hasCard) {
+						hasCard = true;
+						firstCard = this;
+						this.classList.add("pulsing-shadow");
+						return;
+					};
+					secondCard = this;
+					checkCard();
+				};
+
+				function checkCard() {
+					if (firstCard.dataset.card === secondCard.dataset.card) {
+						removeCards();
+
+					} else if (firstCard.dataset.card !== secondCard.dataset.card) {
+						errorCards();
+					}
+				};
+
+				let rating = document.querySelectorAll(".rating");
+				let generalShadow = document.getElementById("general-shadow");
+
+				function removeCards() {
+					var audio = new Audio;
+					audio.src = "audioTrack.mp3";
+					audio.autoplay = true;
+					firstCard.remove();
+					secondCard.remove();
+					endCards();
+					resetBoard();
+				};
+
+				function errorCards() {
+					var audio = new Audio;
+					audio.src = "error.mp3";
+					audio.autoplay = true;
+					firstCard.classList.remove("pulsing-shadow");
+					resetBoard();
+				};
+
+				function endCards() {
+					let rating = document.querySelectorAll(".rating");
+
+					function shuffShadow() {
+						rating[0].classList.remove("rating");
+						rating[0].classList.add("rating-new");
+					};
+					shuffShadow();
+
+					let newImg = document.querySelectorAll(".images-shadow-img");
+
+					if (newImg.length === 0) {
+						let newShadowButton = document.getElementById("shadow - buttons");
+						generalShadow.classList.add("text-letter");
+						generalShadow.innerHTML = "Умница! Ты справился с заданием! Хочешь сыграть еще раз?"
+					};
+				};
+
+				function resetBoard() {
+					hasCard = false;
+					firstCard = null;
+					secondCard = null;
+				};
+
+				ulShadowDiv = document.querySelectorAll(".images-shadow");
+
+				(function shuffShadow() {
+					ulShadowDiv.forEach(elem => {
+						let ramdomImgShadow = Math.floor(Math.random() * 12);
+						elem.style.order = ramdomImgShadow;
+					});
+				})();
+
+        let shadowButtons=document.getElementById("shadow-buttons");
+        shadowButtons.addEventListener("click", shadowButtonsClick);
+        function  shadowButtonsClick () {
+            window.history.go();
+          };
+			};
+
+			function updateButtons() {
+				let state = location.hash.slice(1);
+				console.log(state);
+				if (state === "main") {
+					updateViewLetters();
+				} else if (state === "letters" || state === "lettersImages") {
+					updateViewLetters();
+				} else if (state === "shadow" || state === "shadowImages") {
+					updateViewShadows();
+				}
+			};
+
+			function updateState() {
+				let content = links[location.hash.slice(1)];
+				main.innerHTML = content ? content : "Страница не найдена!";
+				updateButtons();
+			};
+
+			window.addEventListener("hashchange", updateState);
+
+			window.addEventListener("load", (e) => {
+				location.hash.slice(1) ? updateState() : location.hash = "#main";
+			});
+
+		</script>
+	</body>
+	
+	</html>
+</body>
+</html>
